@@ -1,0 +1,16 @@
+Namespace(ref='wav/text', hyp='out/aed-l-asr.txt', print_sentence_wer=1, do_tn=0, rm_special=0)
+>>> Read uttid to tokens: wav/text
+>>> Read uttid to tokens: out/aed-l-asr.txt
+>>> Compute uttid to wer info
+BAC009S0764W0121 wer 0.00 ref 13 sub  0 del  0 ins  0
+IT0011W0001 wer 0.00 ref  4 sub  0 del  0 ins  0
+TEST_NET_Y0000000000_-KTKHdZ2fb8_S00000 wer 0.00 ref 14 sub  0 del  0 ins  0
+TEST_MEETING_T0000000001_S00000 wer 1.72 ref 58 sub  1 del  0 ins  0
+--------------------------------------------------------------------------------
+ref    89 sub     1 del     0 ins     0
+WER  1.12 sub  1.12 del  0.00 ins  0.00
+SER 25.00 = 1 / 4
+--------------------------------------------------------------------------------
+English #word=0, #correct=0
+Digit #word=0, #correct=0
+--------------------------------------------------------------------------------

@@ -1,0 +1,33 @@
+data:
+  manifest: manifest.json
+  vocab_file: pretrained_models/FireRedASR-AED-L/dict.txt
+  cmvn_path: pretrained_models/FireRedASR-AED-L/cmvn.txt
+  spm_model: pretrained_models/FireRedASR-AED-L/train_bpe1000.model  # 确保这个文件存在
+
+model:
+  type: aed  # 确保和 from_pretrained 里的 asr_type 对应
+  pretrained_path: pretrained_models/FireRedASR-AED-L  # 确保这个目录存在
+  cmvn_path: pretrained_models/FireRedASR-AED-L/cmvn.txt
+  spm_model: pretrained_models/FireRedASR-AED-L/train_bpe1000.model
+
+training:
+  batch_size: 8  # 根据你的 GPU 内存大小适当调整，例如 16GB 显存可以试 16
+  learning_rate: 0.0001  # 可能需要调整，Adam 对 1e-3 级别比较敏感
+  epochs: 30
+  checkpoint_dir: checkpoints
+  optimizer: Adam  # 你可以换成 AdamW，训练更稳定
+  weight_decay: 0.01  # 正则化，防止过拟合
+  gradient_accumulation_steps: 2  # 梯度累积，适用于小 batch size
+  scheduler: ReduceLROnPlateau  # 这个默认值 OK
+  scheduler_patience: 3  # 如果 loss 3 轮不下降，减少学习率
+  scheduler_factor: 0.5  # 学习率衰减倍率
+  clip_grad_norm: 5.0  # 避免梯度爆炸
+  initial_dropout: 0.1
+  final_dropout: 0.3
+  seed: 42  # 让实验可复现
+  mixed_precision: true  # 启用 AMP 混合精度加速训练
+
+logging:
+  save_every: 5  # 每 5 轮存一次 checkpoint
+  log_interval: 50  # 每 50 step 记录一次 loss
+  save_best: true  # 只保存最佳模型
