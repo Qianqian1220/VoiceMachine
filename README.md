@@ -1,8 +1,10 @@
 # VoiceMachine: Low-Latency Industrial Speech Control System
 
 **Author**: Qianqian Bian, Qiyan Huang 
+
 **Model Base**: 
 [FireRedASR-AED](https://arxiv.org/abs/2501.14350), [CosyVoice2](https://arxiv.org/abs/2412.10117), [WeNet](https://arxiv.org/abs/2102.01547)
+
 **Project Goal**: Real-time industrial command recognition with low latency and high noise robustness.
 
 ---
